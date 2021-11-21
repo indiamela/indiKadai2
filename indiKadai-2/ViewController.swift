@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     @IBOutlet private weak var textField1: UITextField!
     @IBOutlet private weak var textField2: UITextField!
     @IBOutlet private weak var calcSegmentControll: UISegmentedControl!
     @IBOutlet private weak var resultLabel: UILabel!
-    private var calcOption: Option = .plus
+    var calcOption: Option = .plus
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,26 +36,27 @@ class ViewController: UIViewController {
     }
 }
 
-fileprivate enum Option: Int {
-    case plus
-    case minus
-    case multiple
-    case division
-    
-    func calclate(with num1: Double, _ num2: Double) -> String {
-        switch self {
-        case .plus:
-            return "\(num1 + num2)"
-        case .minus:
-            return "\(num1 - num2)"
-        case .multiple:
-            return "\(num1 * num2)"
-        case .division:
-            guard num2 != 0 else {
-                return "割る数には0以外を入力してください"
+extension ViewController {
+    enum Option: Int {
+        case plus
+        case minus
+        case multiple
+        case division
+        
+        func calclate(with num1: Double, _ num2: Double) -> String {
+            switch self {
+            case .plus:
+                return "\(num1 + num2)"
+            case .minus:
+                return "\(num1 - num2)"
+            case .multiple:
+                return "\(num1 * num2)"
+            case .division:
+                guard num2 != 0 else {
+                    return "割る数には0以外を入力してください"
+                }
+                return "\(num1 / num2)"
             }
-            return "\(num1 / num2)"
         }
     }
 }
-
