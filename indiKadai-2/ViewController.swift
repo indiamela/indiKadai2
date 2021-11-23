@@ -14,10 +14,6 @@ final class ViewController: UIViewController {
     @IBOutlet private weak var calcSegmentControll: UISegmentedControl!
     @IBOutlet private weak var resultLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     @IBAction private func didTapCalcButton(_ sender: Any){
         let num = calcSegmentControll.selectedSegmentIndex
         let calcOption = Option(rawValue: num) ?? .plus
