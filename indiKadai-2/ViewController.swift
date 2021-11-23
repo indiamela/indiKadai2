@@ -21,7 +21,7 @@ final class ViewController: UIViewController {
     }
     
     private func calculate(option: Option) -> String {
-        guard let num1 = textField1.text.flatMap({Double($0)}),let num2 = textField2.text.flatMap({Double($0)}) else {
+        guard let num1 = textField1.text.flatMap({ Double($0) }), let num2 = textField2.text.flatMap({ Double($0) }) else {
             return "エラー：数値を入力してください"
         }
         return option.calclate(with: num1, num2)
