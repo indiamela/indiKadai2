@@ -13,18 +13,15 @@ final class ViewController: UIViewController {
     @IBOutlet private weak var textField2: UITextField!
     @IBOutlet private weak var calcSegmentControll: UISegmentedControl!
     @IBOutlet private weak var resultLabel: UILabel!
-    var calcOption: Option = .plus
+    private var calcOption: Option = .plus
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    @IBAction private func changeCalcOption(_ sender: Any) {
+    @IBAction private func didTapCalcButton(_ sender: Any){
         let num = calcSegmentControll.selectedSegmentIndex
         calcOption = Option(rawValue: num) ?? .plus
-    }
-    
-    @IBAction private func didTapCalcButton(_ sender: Any){
         resultLabel.text = calculate()
     }
     
