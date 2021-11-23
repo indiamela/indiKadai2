@@ -29,7 +29,7 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController {
-    enum Option: Int {
+    private enum Option: Int {
         case plus
         case minus
         case multiple
