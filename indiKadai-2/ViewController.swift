@@ -13,7 +13,6 @@ final class ViewController: UIViewController {
     @IBOutlet private weak var textField2: UITextField!
     @IBOutlet private weak var calcSegmentControll: UISegmentedControl!
     @IBOutlet private weak var resultLabel: UILabel!
-    private var calcOption: Option = .plus
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +20,15 @@ final class ViewController: UIViewController {
 
     @IBAction private func didTapCalcButton(_ sender: Any){
         let num = calcSegmentControll.selectedSegmentIndex
-        calcOption = Option(rawValue: num) ?? .plus
-        resultLabel.text = calculate()
+        let calcOption = Option(rawValue: num) ?? .plus
+        resultLabel.text = calculate(option: calcOption)
     }
     
-    private func calculate() -> String {
+    private func calculate(option: Option) -> String {
         guard let num1 = textField1.text.flatMap({Double($0)}),let num2 = textField2.text.flatMap({Double($0)}) else {
             return "エラー：数値を入力してください"
         }
-        return calcOption.calclate(with: num1, num2)
+        return option.calclate(with: num1, num2)
     }
 }
 
